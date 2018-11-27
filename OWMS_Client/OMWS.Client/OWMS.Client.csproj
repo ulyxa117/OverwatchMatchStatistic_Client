@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{14A92ADC-DA57-4295-9D01-D3918CC7ECE8}</ProjectGuid>
+    <ProjectGuid>{ED824EAE-952F-4C9B-864B-1337C43C08BC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>OWMS_Client</RootNamespace>
-    <AssemblyName>OWMS_Client</AssemblyName>
+    <RootNamespace>OMWS.Client</RootNamespace>
+    <AssemblyName>OMWS.Client</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="OWMS.Model">
+      <HintPath>..\OWMS.Model\bin\Debug\OWMS.Model.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -54,21 +57,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="View\MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModel\MainVM.cs" />
-    <Compile Include="View\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Page Include="Main\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Main\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Main\MainViewVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -86,9 +88,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Assets\filenames.json" />
-    <None Include="Assets\languages\en-us.json" />
-    <None Include="Assets\languages\ru-ru.json" />
+    <None Include="Config\filenames.json" />
+    <None Include="Config\Languages\en-us.json" />
+    <None Include="Config\Languages\ru-ru.json" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -96,6 +98,38 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\ANA.png" />
+    <Resource Include="Images\ASHE.png" />
+    <Resource Include="Images\BASTION.png" />
+    <Resource Include="Images\BRIGITTE.png" />
+    <Resource Include="Images\DOOMFIST.png" />
+    <Resource Include="Images\DVA.png" />
+    <Resource Include="Images\GENJI.png" />
+    <Resource Include="Images\HANZO.png" />
+    <Resource Include="Images\JUNKRAT.png" />
+    <Resource Include="Images\LUCIO.png" />
+    <Resource Include="Images\MCCREE.png" />
+    <Resource Include="Images\MEI.png" />
+    <Resource Include="Images\MERCY.png" />
+    <Resource Include="Images\MOIRA.png" />
+    <Resource Include="Images\ORISA.png" />
+    <Resource Include="Images\PHARAH.png" />
+    <Resource Include="Images\REAPER.png" />
+    <Resource Include="Images\REINHARDT.png" />
+    <Resource Include="Images\ROADHOG.png" />
+    <Resource Include="Images\SOLDIER76.png" />
+    <Resource Include="Images\SOMBRA.png" />
+    <Resource Include="Images\SYMMETRA.png" />
+    <Resource Include="Images\TORBJORN.png" />
+    <Resource Include="Images\TRACER.png" />
+    <Resource Include="Images\WIDOWMAKER.png" />
+    <Resource Include="Images\WINSTON.png" />
+    <Resource Include="Images\WRECKING_BALL.png" />
+    <Resource Include="Images\ZARYA.png" />
+    <Resource Include="Images\ZENYATTA.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
