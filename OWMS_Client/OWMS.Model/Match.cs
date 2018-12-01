@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Mvvm;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace OWMS.Model
 {
-    public static class MathFuncs
+    public class Match : BindableBase
     {
-        public static int GetSumOf(int a, int b) => a + b;
+        public string Header { get { return "122"; } }
     }
 }

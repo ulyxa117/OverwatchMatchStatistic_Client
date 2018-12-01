@@ -5,36 +5,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OWMS.Model;
+using Prism.Mvvm;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using Prism.Commands;
 
 namespace OWMS.Client.Main
 {
-    public class MainViewVM : INotifyPropertyChanged
+    public class MainViewVM : BindableBase
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        private ReadOnlyObservableCollection<Match> matches_;
+        public ObservableCollection<MatchVM> Matches { get; }
+        public DelegateCommand GetChange { get; }
 
-        private int _number1;
-        public int Number1
+        public MainViewVM()
         {
-            get { return _number1; }
-            set
-            {
-                _number1 = value;
-                OnPropertyChanged("Number3"); // уведомление View о том, что изменилась сумма
-            }
+            matches_ = new ReadOnlyObservableCollection<Match>(new ObservableCollection<Match>() { new Match(), new Match(), new Match() });
+            Matches = new ObservableCollection<MatchVM>(matches_.Select(x => new MatchVM(x)));
         }
+    }
 
-        private int _number2;
-        public int Number2
+    public class MatchVM : BindableBase
+    {
+        public string Header => Match.Header;
+        public Match Match { get; }
+
+        public MatchVM(Match match)
         {
-            get { return _number2; }
-            set { _number1 = value; OnPropertyChanged("Number3"); }
+            Match = match;
+            match.PropertyChanged += (s, a) => { RaisePropertyChanged(nameof(Match)); };
         }
-
-        //свойство только для чтения, оно считывается View каждый раз, когда обновляется Number1 или Number2
-        public int Number3 { get { return MathFuncs.GetSumOf(Number1, Number2); } }
     }
 }

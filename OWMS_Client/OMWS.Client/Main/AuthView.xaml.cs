@@ -3,11 +3,11 @@
 namespace OWMS.Client.Main
 {
     /// <summary>
-    /// Логика взаимодействия для MainView.xaml
+    /// Логика взаимодействия для AuthView.xaml
     /// </summary>
-    public partial class MainView : Window
+    public partial class AuthView : Window
     {
-        public MainView()
+        public AuthView()
         {
             InitializeComponent();
         }
